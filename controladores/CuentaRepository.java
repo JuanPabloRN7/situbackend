@@ -13,6 +13,9 @@ import com.situbackend.modelo.Cuenta;
  */ 
 public interface CuentaRepository extends CrudRepository<Cuenta, Integer>
 {
+    @Query("Select c from Cuenta c where c.usuario = ?1")
+    Cuenta findByUsuario(String usuario);
+
     @Query("Select c from Cuenta c where c.external_id = ?1")
     Cuenta findByExternal_id(String external_id);
 }
